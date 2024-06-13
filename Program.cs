@@ -9,14 +9,15 @@
         int rowNumber = 0;
         string[] wordsUserInput;
         bool isCompleteSudokuValide = true;
+
         static void Main(string[] args)
         {
             Program program = new Program();
             program.GetUserData();
-            //program.DisplaySudoku();
             program.ValidateCompleteSudoku();
         }
 
+        //Get user data row by row
         public void GetUserData()
         {
             Console.WriteLine("Please enter the elements for the sudoku 9*9 row by row :");
@@ -42,6 +43,7 @@
             }
         }
 
+        //validate the complete sudoku 9*9
         public void ValidateCompleteSudoku()
         {
             List<int> isInnerSudokuValidList = new List<int>();
@@ -117,6 +119,7 @@
                 Console.WriteLine("Given sudoku is not valid");
         }
 
+        //Validate inner grids 3*3
         public bool ValidateInnerSudoku(int startingIndexColumn = 0, int startingIndexRow = 0, int tmpSudokuSize = 3, int byColumnOrRow = 0)
         {
             List<int> innerSudokuGridList = new List<int>();
@@ -160,12 +163,15 @@
             return isValide;
         }
 
+        //Validate row by row
         public bool ValidateRowWise()
         {
             bool isRowValide;
             isRowValide = ValidateInnerSudoku(0, 0, 9, 2);
             return isRowValide;
         }
+
+        //Validate colum by column
         public bool ValidateColumnWise()
         {
             bool isColumnValide;
@@ -173,6 +179,7 @@
             return isColumnValide;
         }
 
+        //Display user entered sudoku the format 9*9
         public void DisplaySudoku()
         {
             Console.WriteLine("\nSudoku :");
